@@ -2,18 +2,20 @@ package systems;
 
 import core.System;
 import core.Vector2d;
-import components.Position;
 import components.Velocity;
 import components.Goal;
+import components.Position;
+import components.Transform;
 
 class MoveSeek extends System {
 	public function new() {
-		this.blueprints.set("default", ["Position", "Velocity"]);
+		this.blueprints.set("default", ["Position", "Transform", "Velocity", "Goal"]);
 	}
 
 	override function update(s2d:h2d.Scene) {
 		for (entity in entities['default']) {
 			var position:Position = cast entity.components.get("Position");
+			var transform:Transform = cast entity.components.get("Transform");
 			var velocity:Velocity = cast entity.components.get("Velocity");
 			var goal:Goal = cast entity.components.get("Goal");
 
@@ -28,6 +30,8 @@ class MoveSeek extends System {
 
 			velocity.v = currentVelocity.add(steering);
 			position.v = currentPosition.add(velocity.v);
+
+			transform.angle = Math.atan2(position.v.y - currentPosition.y, position.v.x - currentPosition.x);
 		}
 	}
 }

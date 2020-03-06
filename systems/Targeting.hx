@@ -17,8 +17,8 @@ class Targeting extends System {
 				var goal:Goal = cast entitySource.components.get("Goal");
 
 				if (entitySource.id != entityTarget.id) {
-					goal.x = positionData.x;
-					goal.y = positionData.y;
+					goal.x = positionData.v.x;
+					goal.y = positionData.v.y;
 				}
 			}
 		}

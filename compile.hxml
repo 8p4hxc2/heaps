@@ -1,4 +1,4 @@
 -lib heaps
--js hello.js
+-js build/hello.js
 -main Main
 -debug

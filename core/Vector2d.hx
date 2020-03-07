@@ -40,6 +40,16 @@ class Vector2d {
 		return magnitude;
 	}
 
+	public function truncate(max:Float):Vector2d {
+		var clone = clone();
+
+		if (clone.length > max) {
+			return clone.normalize().multiplyFloat(max);
+		}
+
+		return clone;
+	}
+
 	public function polar(magnitude:Float, angle:Float) {
 		this.x = magnitude * Math.cos(angle);
 		this.y = magnitude * Math.sin(angle);

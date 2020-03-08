@@ -2,12 +2,14 @@ package core;
 
 class System {
 	var blueprints:Map<String, Array<String>> = new Map();
-	var entities:Map<String, Array<Entity>> = new Map();
+	var entities:Map<String, Map<Int, Entity>> = new Map();
+
+	var entityCount:Int = 0;
 
 	public function register(entity:Entity) {
 		for (key in blueprints.keys()) {
 			if (entities[key] == null) {
-				entities[key] = [];
+				entities[key] = new Map();
 			}
 
 			var match:Int = 0;
@@ -19,10 +21,22 @@ class System {
 				}
 
 				if (match == total) {
-					entities[key].push(entity);
+					entityCount++;
+					entities[key][entity.id] = entity;
 				}
 			}
 		}
+	}
+
+	public function remove(entity:Entity) {
+		for (key in blueprints.keys()) {
+			entities[key].remove(entity.id);
+			entityCount--;
+		}
+	}
+
+	public function getEntityCount() {
+		return entityCount;
 	}
 
 	public function update(s2d:h2d.Scene) {}

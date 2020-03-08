@@ -1,4 +1,4 @@
-package systems;
+/*package systems;
 
 import core.System;
 import components.Mouse;
@@ -15,4 +15,4 @@ class UpdateMouse extends System {
 			mouse.y = s2d.mouseY;
 		}
 	}
-}
+}*/

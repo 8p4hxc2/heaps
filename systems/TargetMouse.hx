@@ -11,10 +11,14 @@ class TargetMouse extends System {
 
 	override function update(s2d:h2d.Scene) {
 		for (entity in entities['default']) {
-			var mouse:Mouse = cast entity.components.get("Mouse");
+			// var mouse:Mouse = cast entity.components.get("Mouse");
 			var goal:Goal = cast entity.components.get("Goal");
-			goal.x = mouse.x;
-			goal.y = mouse.y;
+			goal.x = s2d.mouseX;
+			goal.y = s2d.mouseY;
 		}
+	}
+
+	public function toString() {
+		return "TargetMouse";
 	}
 }

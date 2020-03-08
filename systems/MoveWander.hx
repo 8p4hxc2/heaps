@@ -43,4 +43,8 @@ class MoveWander extends System {
 			transform.angle = Math.atan2(position.v.y - currentPosition.y, position.v.x - currentPosition.x);
 		}
 	}
+
+	public function toString() {
+		return "MoveWander";
+	}
 }

@@ -1,3 +1,4 @@
+// change a goal to a target position
 package systems;
 
 import core.System;
@@ -13,14 +14,18 @@ class Targeting extends System {
 	override function update(s2d:h2d.Scene) {
 		for (entitySource in entities["source"]) {
 			for (entityTarget in entities["target"]) {
-				var positionData:Position = cast entityTarget.components.get("Position");
+				var targetPosition:Position = cast entityTarget.components.get("Position");
 				var goal:Goal = cast entitySource.components.get("Goal");
 
 				if (entitySource.id != entityTarget.id) {
-					goal.x = positionData.v.x;
-					goal.y = positionData.v.y;
+					goal.x = targetPosition.v.x;
+					goal.y = targetPosition.v.y;
 				}
 			}
 		}
+	}
+
+	public function toString() {
+		return "Targeting";
 	}
 }

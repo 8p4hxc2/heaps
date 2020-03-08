@@ -1,3 +1,4 @@
+// draw text at a position on the screen
 package systems;
 
 import core.System;
@@ -18,17 +19,21 @@ class DrawText extends System {
 			var position:Position = cast entity.components.get("Position");
 			var transform:Transform = cast entity.components.get("Transform");
 
-			if (text.instance == null) {
-				text.instance = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
+			if (!instances.exists(entity.id)) {
+				instances[entity.id] = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
 			}
 
-			text.instance.text = text.value;
-			text.instance.x = position.v.x;
-			text.instance.y = position.v.y;
+			instances[entity.id].text = text.value;
+			instances[entity.id].x = position.v.x;
+			instances[entity.id].y = position.v.y;
 
 			if (transform != null) {
-				text.instance.rotation = transform.angle;
+				instances[entity.id].rotation = transform.angle;
 			}
 		}
+	}
+
+	public function toString() {
+		return "DrawText";
 	}
 }

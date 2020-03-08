@@ -16,4 +16,8 @@ class UpdateFps extends System {
 			text.value = Std.string(Timer.fps());
 		}
 	}
+
+	public function toString() {
+		return "UpdateFps";
+	}
 }

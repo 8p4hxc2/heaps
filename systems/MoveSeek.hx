@@ -1,3 +1,4 @@
+// move an entity to a goal
 package systems;
 
 import core.System;
@@ -33,5 +34,9 @@ class MoveSeek extends System {
 
 			transform.angle = Math.atan2(position.v.y - currentPosition.y, position.v.x - currentPosition.x);
 		}
+	}
+
+	public function toString() {
+		return "MoveSeek";
 	}
 }

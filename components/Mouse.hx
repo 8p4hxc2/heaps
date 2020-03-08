@@ -1,6 +1,7 @@
 package components;
 
 import core.Component;
-import core.Vector2d;
 
-class Mouse extends Vector {}
+class Mouse extends Component {
+	public function new() {}
+}

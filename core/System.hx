@@ -3,8 +3,13 @@ package core;
 class System {
 	var blueprints:Map<String, Array<String>> = new Map();
 	var entities:Map<String, Map<Int, Entity>> = new Map();
+	var parent:State;
 
 	var entityCount:Int = 0;
+
+	public function new(_parent:State) {
+		parent = _parent;
+	}
 
 	public function register(entity:Entity) {
 		for (key in blueprints.keys()) {

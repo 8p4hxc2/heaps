@@ -5,9 +5,10 @@ import core.Component;
 
 class AnimatedSprite extends Component {
 	public var texture:String;
-	public var instance:Object;
+	public var frames:Int;
 
-	public function new(_texture:String) {
+	public function new(_texture:String, _frames:Int) {
 		texture = _texture;
+		frames = _frames;
 	}
 }

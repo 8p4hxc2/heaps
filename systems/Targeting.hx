@@ -2,11 +2,13 @@
 package systems;
 
 import core.System;
+import core.State;
 import components.Goal;
 import components.Position;
 
 class Targeting extends System {
-	public function new() {
+	public function new(_parent:State) {
+		super(_parent);
 		this.blueprints.set("source", ["Position", "Attack", "Goal"]);
 		this.blueprints.set("target", ["Position", "Target"]);
 	}

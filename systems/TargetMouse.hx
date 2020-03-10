@@ -1,11 +1,13 @@
 package systems;
 
 import core.System;
+import core.State;
 import components.Goal;
 import components.Mouse;
 
 class TargetMouse extends System {
-	public function new() {
+	public function new(_parent:State) {
+		super(_parent);
 		this.blueprints.set("default", ["Mouse", "Goal"]);
 	}
 

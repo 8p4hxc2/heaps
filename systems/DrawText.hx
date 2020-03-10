@@ -2,6 +2,7 @@
 package systems;
 
 import core.System;
+import core.State;
 import components.Text;
 import components.Position;
 import components.Transform;
@@ -9,7 +10,8 @@ import components.Transform;
 class DrawText extends System {
 	public var instances:Map<Int, h2d.Text> = new Map();
 
-	public function new() {
+	public function new(_parent:State) {
+		super(_parent);
 		this.blueprints.set("default", ["Text", "Position", "~Transform"]);
 	}
 

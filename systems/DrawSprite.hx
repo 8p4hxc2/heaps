@@ -2,8 +2,8 @@
 package systems;
 
 import h2d.Bitmap;
-import h2d.Anim;
 import core.System;
+import core.State;
 import components.Sprite;
 import components.Position;
 import components.Transform;
@@ -11,7 +11,8 @@ import components.Transform;
 class DrawSprite extends System {
 	public var instances:Map<Int, Bitmap> = new Map();
 
-	public function new() {
+	public function new(_parent:State) {
+		super(_parent);
 		this.blueprints.set("default", ["Sprite", "Position", "~Transform"]);
 	}
 
@@ -31,6 +32,12 @@ class DrawSprite extends System {
 
 			if (transform != null) {
 				instances[entity.id].rotation = transform.angle;
+			}
+
+			if (entity.isTrash()) {
+				instances[entity.id].remove();
+				instances.remove(entity.id);
+				remove(entity);
 			}
 		}
 	}

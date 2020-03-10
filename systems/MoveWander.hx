@@ -1,6 +1,7 @@
 package systems;
 
 import core.System;
+import core.State;
 import core.Vector2d;
 import components.Position;
 import components.Transform;
@@ -8,7 +9,8 @@ import components.Velocity;
 import components.Wander;
 
 class MoveWander extends System {
-	public function new() {
+	public function new(_parent:State) {
+		super(_parent);
 		this.blueprints.set("default", ["Position", "Transform", "Velocity", "Wander"]);
 	}
 

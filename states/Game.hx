@@ -4,6 +4,8 @@ import core.State;
 import systems.DrawText;
 import systems.DrawSprite;
 import systems.DrawAnimatedSprite;
+import systems.MovePlayer;
+import systems.MoveBullet;
 // import systems.UpdateMouse;
 import systems.MoveSeek;
 import systems.MoveWander;
@@ -12,6 +14,7 @@ import systems.TargetMouse;
 import systems.UpdateFps;
 import entities.Enemy;
 import entities.Fps;
+import entities.Player;
 import components.Goal;
 import components.Target;
 import components.Mouse;
@@ -25,16 +28,20 @@ class Game extends State {
 		// systems.push(new Targeting());
 		// systems.push(new MoveSeek());
 		// systems.push(new MoveWander());
-		systems.push(new DrawText());
-		systems.push(new DrawSprite());
-		systems.push(new DrawAnimatedSprite());
-		systems.push(new UpdateFps());
+		systems.push(new MovePlayer(this));
+		systems.push(new MoveBullet(this));
+		systems.push(new DrawText(this));
+		systems.push(new DrawSprite(this));
+		systems.push(new DrawAnimatedSprite(this));
+		systems.push(new UpdateFps(this));
 
 		// UI
 		var u1 = new Fps(1300, 100);
 
 		// GAME
 		// var e1 = new Enemy(33, 44);
+
+		var player = new Player(130, 100);
 
 		for (i in 0...3000) {
 			addEnemy();
@@ -53,12 +60,13 @@ class Game extends State {
 			e2.components.set("Angle", new Angle(20)); */
 
 		register(u1);
+		register(player);
 
 		/*register(e2);
 			register(e3); */
 	}
 
-	function addEnemy() {
+	public function addEnemy() {
 		var e = new Enemy(Std.random(1000), Std.random(1000));
 		// e.components.set("Goal", new Goal(0, 900));
 		// e.components.set("Mouse", new Mouse());

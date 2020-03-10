@@ -5,8 +5,6 @@ class System {
 	var entities:Map<String, Map<Int, Entity>> = new Map();
 	var parent:State;
 
-	var entityCount:Int = 0;
-
 	public function new(_parent:State) {
 		parent = _parent;
 	}
@@ -26,7 +24,6 @@ class System {
 				}
 
 				if (match == total) {
-					entityCount++;
 					entities[key][entity.id] = entity;
 				}
 			}
@@ -36,11 +33,18 @@ class System {
 	public function remove(entity:Entity) {
 		for (key in blueprints.keys()) {
 			entities[key].remove(entity.id);
-			entityCount--;
 		}
 	}
 
 	public function getEntityCount() {
+		var entityCount:Int = 0;
+
+		for (key in blueprints.keys()) {
+			for (entity in entities[key]) {
+				entityCount++;
+			}
+		}
+
 		return entityCount;
 	}
 

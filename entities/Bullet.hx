@@ -8,6 +8,7 @@ import components.Velocity;
 import components.Text;
 import components.AnimatedSprite;
 import components.Sprite;
+import components.Damage;
 import components.Wander;
 
 class Bullet extends Entity {
@@ -21,5 +22,6 @@ class Bullet extends Entity {
 		// components.set("Sprite", new Sprite('Ship/10.png'));
 		// components.set("AnimatedSprite", new AnimatedSprite('Fx/Fx7.png', 8));
 		components.set("Sprite", new Sprite('Shoot/1.png'));
+		components.set("Damage", new Damage());
 	}
 }

@@ -8,12 +8,12 @@ import components.Velocity;
 import components.Goal;
 import components.Position;
 import components.Transform;
-import entities.Enemy;
+import entities.Bullet;
 
-class MoveBullet extends System {
+class MoveEnemy extends System {
 	public function new(_parent:State) {
 		super(_parent);
-		this.blueprints.set("default", ["Position", "Velocity", "Damage"]);
+		this.blueprints.set("default", ["Position", "Velocity", "Attack"]);
 	}
 
 	override function update(s2d:h2d.Scene) {
@@ -24,14 +24,17 @@ class MoveBullet extends System {
 			var currentVelocity:Vector2d = velocity.v;
 			position.v = position.v.add(currentVelocity);
 
-			if (position.v.y < -100) {
+			if (entity.isTrash()) {
 				remove(entity);
+			}
+
+			if (position.v.y > 2000) {
 				entity.trash();
 			}
 		}
 	}
 
 	public function toString() {
-		return "MoveBullet";
+		return "MoveEnemy";
 	}
 }

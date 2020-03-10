@@ -37,11 +37,13 @@ class MovePlayer extends System {
 			}
 
 			if (hxd.Key.isPressed(hxd.Key.U)) {
-				var e = new Bullet(position.v.x, position.v.y);
-				// e.components.set("Goal", new Goal(0, 900));
-				// e.components.set("Mouse", new Mouse());
-				// e.components.set("Target", new Target());
-				parent.register(e);
+				for (i in 0...100) {
+					var e = new Bullet(position.v.x + Std.random(1000) - 500, position.v.y);
+					// e.components.set("Goal", new Goal(0, 900));
+					// e.components.set("Mouse", new Mouse());
+					// e.components.set("Target", new Target());
+					parent.register(e);
+				}
 			}
 		}
 	}

@@ -17,7 +17,7 @@ class DrawAnimatedSprite extends System {
 		this.blueprints.set("default", ["AnimatedSprite", "Position", "~Transform"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var animatedSprite:AnimatedSprite = cast entity.components.get("AnimatedSprite");
 			var position:Position = cast entity.components.get("Position");

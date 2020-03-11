@@ -14,7 +14,7 @@ class MoveWander extends System {
 		this.blueprints.set("default", ["Position", "Transform", "Velocity", "Wander"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var position:Position = cast entity.components.get("Position");
 			var velocity:Velocity = cast entity.components.get("Velocity");

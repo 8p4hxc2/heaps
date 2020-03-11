@@ -16,7 +16,7 @@ class DrawSprite extends System {
 		this.blueprints.set("default", ["Sprite", "Position", "~Transform"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var sprite:Sprite = cast entity.components.get("Sprite");
 			var position:Position = cast entity.components.get("Position");

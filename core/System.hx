@@ -48,5 +48,5 @@ class System {
 		return entityCount;
 	}
 
-	public function update(s2d:h2d.Scene) {}
+	public function update(s2d:h2d.Object) {}
 }

@@ -5,14 +5,15 @@ import core.Entity;
 import components.Position;
 import components.Sprite;
 import components.Velocity;
-import components.Attack;
+import components.TakeDamage;
 
 class Enemy extends Entity {
 	public function new(?x:Float = 100, ?y:Float = 50, ?vx:Float = 0, ?vy:Float = 1) {
 		id = Const.NEXT_UNIQ;
 		components.set("Position", new Position(x, y));
-		components.set("Velocity", new Velocity(vx, vy));
-		components.set("Sprite", new Sprite('Ship/10.png'));
-		components.set("Attack", new Attack());
+    components.set("Velocity", new Velocity(vx, vy));
+    var enemyType=Std.random(10)+1;
+		components.set("Sprite", new Sprite('Ship/$enemyType.png'));
+		components.set("TakeDamage", new TakeDamage());
 	}
 }

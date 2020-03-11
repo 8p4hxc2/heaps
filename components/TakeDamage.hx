@@ -2,6 +2,6 @@ package components;
 
 import core.Component;
 
-class Attack extends Component {
+class TakeDamage extends Component {
 	public function new() {}
 }

@@ -22,11 +22,12 @@ import entities.Player;
 import components.Goal;
 import components.Target;
 import components.Mouse;
-import components.Attack;
+import components.TakeDamage;
 import components.Wander;
 
 class Game extends State {
-	public function new() {
+	public override function init(s2d:h2d.Scene) {
+    super.init(s2d);
 		// systems.push(new UpdateMouse());
 		// systems.push(new TargetMouse());
 		// systems.push(new Targeting());
@@ -88,8 +89,8 @@ class Game extends State {
 		}
 	}
 
-	override function update(s2d:h2d.Scene) {
-		super.update(s2d);
+	override function update() {
+		super.update();
 
 		if (hxd.Key.isPressed(hxd.Key.SPACE)) {
 			for (i in 0...1000) {
@@ -99,6 +100,12 @@ class Game extends State {
 
 		if (hxd.Key.isPressed(hxd.Key.I)) {
 			logEntityNumber();
-		}
+    }
+
+    if (hxd.Key.isPressed(hxd.Key.P)) {
+      pause();
+      parent.activate('pause');
+    }
+
 	}
 }

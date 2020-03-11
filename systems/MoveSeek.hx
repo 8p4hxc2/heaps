@@ -15,7 +15,7 @@ class MoveSeek extends System {
 		this.blueprints.set("default", ["Position", "Transform", "Velocity", "Goal"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var position:Position = cast entity.components.get("Position");
 			var transform:Transform = cast entity.components.get("Transform");

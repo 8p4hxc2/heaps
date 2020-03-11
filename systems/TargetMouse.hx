@@ -11,12 +11,12 @@ class TargetMouse extends System {
 		this.blueprints.set("default", ["Mouse", "Goal"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			// var mouse:Mouse = cast entity.components.get("Mouse");
 			var goal:Goal = cast entity.components.get("Goal");
-			goal.x = s2d.mouseX;
-			goal.y = s2d.mouseY;
+			//goal.x = hxd.L.mouseX;
+      //goal.y = s2d.mouseY;
 		}
 	}
 

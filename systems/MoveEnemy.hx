@@ -13,10 +13,10 @@ import entities.Bullet;
 class MoveEnemy extends System {
 	public function new(_parent:State) {
 		super(_parent);
-		this.blueprints.set("default", ["Position", "Velocity", "Attack"]);
+		this.blueprints.set("default", ["Position", "Velocity", "TakeDamage"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var position:Position = cast entity.components.get("Position");
 			var velocity:Velocity = cast entity.components.get("Velocity");

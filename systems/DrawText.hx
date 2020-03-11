@@ -15,7 +15,7 @@ class DrawText extends System {
 		this.blueprints.set("default", ["Text", "Position", "~Transform"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var text:Text = cast entity.components.get("Text");
 			var position:Position = cast entity.components.get("Position");

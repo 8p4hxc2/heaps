@@ -11,7 +11,7 @@ class UpdateFps extends System {
 		this.blueprints.set("default", ["Text", "Fps"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entity in entities['default']) {
 			var text:Text = cast entity.components.get("Text");
 

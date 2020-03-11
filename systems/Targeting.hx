@@ -13,7 +13,7 @@ class Targeting extends System {
 		this.blueprints.set("target", ["Position", "Target"]);
 	}
 
-	override function update(s2d:h2d.Scene) {
+	override function update(s2d:h2d.Object) {
 		for (entitySource in entities["source"]) {
 			for (entityTarget in entities["target"]) {
 				var targetPosition:Position = cast entityTarget.components.get("Position");

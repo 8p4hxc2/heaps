@@ -11,39 +11,39 @@ class Main extends hxd.App {
 
 		// launch the game
 		game = new Game(this);
-		game.init(s2d);
+		game.init(s2d, false);
 
 		pause = new Pause(this);
-		pause.init(s2d);
+		pause.init(s2d, true);
 	}
 
 	override function update(dt:Float) {
 		if (pause.canUpdate()) {
 			pause.update();
-		}
-
-		if (game.canUpdate()) {
+		} else if (game.canUpdate()) {
 			game.update();
 		}
 	}
 
-	public function activate(name:String) {
+	public function addState(name:String) {
 		switch (name) {
 			case "pause":
-				trace('pause?');
+				game.pause();
+				pause.unpause();
 				pause.display();
-
-			case "game":
-				game.display();
 		}
 	}
 
 	public function removeState(name:String) {
 		switch (name) {
 			case "pause":
+				game.unpause();
+				pause.pause();
 				pause.hide();
 		}
 	}
+
+	public function replaceState(name:String) {}
 
 	static function main() {
 		new Main();

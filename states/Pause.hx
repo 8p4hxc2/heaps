@@ -26,31 +26,26 @@ import components.TakeDamage;
 import components.Wander;
 
 class Pause extends State {
-	public override function init(s2d:h2d.Scene) {
-    super.init(s2d);
+	public override function init(s2d:h2d.Scene, _paused:Bool) {
+		super.init(s2d, _paused);
 		/*systems.push(new MovePlayer(this));
-		systems.push(new MoveBullet(this));
-		systems.push(new MoveEnemy(this));
-		systems.push(new KillEnemy(this));
-		systems.push(new DrawText(this));*/
-    systems.push(new DrawSprite(this));
-    var player = new Player(130, 100);
-    register(player);
+			systems.push(new MoveBullet(this));
+			systems.push(new MoveEnemy(this));
+			systems.push(new KillEnemy(this));
+			systems.push(new DrawText(this)); */
+		systems.push(new DrawSprite(this));
+		var player = new Player(130, 100);
+		register(player);
 
-    hide();
 		/*systems.push(new DrawAnimatedSprite(this));
-		systems.push(new UpdateFps(this));*/
-  }
-  
-  override function update() {
+			systems.push(new UpdateFps(this)); */
+	}
+
+	override function update() {
 		super.update();
 
-    if (hxd.Key.isPressed(hxd.Key.P)) {
-      trace('pause dans pause');
-      pause();
-      hide();
-      parent.activate('game');
-    }
-
+		if (hxd.Key.isPressed(hxd.Key.P)) {
+			parent.removeState('pause');
+		}
 	}
 }

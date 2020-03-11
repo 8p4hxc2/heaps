@@ -26,8 +26,8 @@ import components.TakeDamage;
 import components.Wander;
 
 class Game extends State {
-	public override function init(s2d:h2d.Scene) {
-    super.init(s2d);
+	public override function init(s2d:h2d.Scene, _paused:Bool) {
+		super.init(s2d, _paused);
 		// systems.push(new UpdateMouse());
 		// systems.push(new TargetMouse());
 		// systems.push(new Targeting());
@@ -100,12 +100,10 @@ class Game extends State {
 
 		if (hxd.Key.isPressed(hxd.Key.I)) {
 			logEntityNumber();
-    }
+		}
 
-    if (hxd.Key.isPressed(hxd.Key.P)) {
-      pause();
-      parent.activate('pause');
-    }
-
+		if (hxd.Key.isPressed(hxd.Key.P)) {
+			parent.addState("pause");
+		}
 	}
 }
